@@ -1,0 +1,252 @@
+:root {
+  --primary-color: #6366f1;
+  --primary-hover: #4f46e5;
+  --background-color: #ffffff;
+  --card-background: #f9fafb;
+  --text-color: #1f2937;
+  --text-secondary: #6b7280;
+  --border-color: #e5e7eb;
+  --success-color: #10b981;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --border-radius: 8px;
+}
+
+/* Base styles */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: #f3f4f6;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Container */
+.audio-transcriber-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 32px;
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+/* Header */
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* File input container */
+.file-inp {
+  margin-bottom: 24px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+/* Custom file input */
+.file-inp input[type="file"] {
+  width: 100%;
+  font-size: 16px;
+  color: var(--text-secondary);
+  padding: 12px;
+  background-color: var(--card-background);
+  border: 2px dashed var(--border-color);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.file-inp input[type="file"]:hover {
+  border-color: var(--primary-color);
+}
+
+.file-inp input[type="file"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.file-inp input[type="file"]::file-selector-button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.file-inp input[type="file"]::file-selector-button:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Upload button */
+.upload-btn {
+  display: block;
+  width: 100%;
+  padding: 12px 24px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-bottom: 24px;
+}
+
+.upload-btn:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+}
+
+.upload-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.upload-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Loading animation */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  background-color: var(--card-background);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  margin-bottom: 24px;
+}
+
+.loading-container p {
+  margin-top: 16px;
+  color: var(--text-secondary);
+  font-size: 16px;
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(99, 102, 241, 0.2);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Transcription result */
+.transcribe-result {
+  background-color: var(--card-background);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  border: 1px solid var(--border-color);
+}
+
+.transcribe-result h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: var(--text-color);
+}
+
+.transcribe-result p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: white;
+  padding: 16px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  min-height: 100px;
+  white-space: pre-wrap;
+}
+
+/* Empty state */
+.transcribe-result p:empty::before {
+  content: "Transcription will appear here...";
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.copywrite-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.copywrite{
+  font-size: 10px;
+  margin-top: 20px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .audio-transcriber-container {
+    margin: 20px;
+    padding: 24px;
+  }
+  
+  h1 {
+    font-size: 24px;
+  }
+  
+  .upload-btn {
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .audio-transcriber-container {
+    margin: 16px;
+    padding: 16px;
+  }
+  
+  h1 {
+    font-size: 22px;
+  }
+  
+  .file-inp input[type="file"] {
+    font-size: 14px;
+  }
+  
+  .file-inp input[type="file"]::file-selector-button {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+  
+  .transcribe-result h2 {
+    font-size: 18px;
+  }
+  
+  .transcribe-result p {
+    font-size: 14px;
+  }
+  
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+  }
+}
